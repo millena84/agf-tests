@@ -1,0 +1,8 @@
+{
+  "title": "Query TST_CM List",
+  "description": "Lightning Type para listar e selecionar registros TST_CM__c",
+  "type": "array",
+  "items": {
+    "type": "object"
+  }
+}

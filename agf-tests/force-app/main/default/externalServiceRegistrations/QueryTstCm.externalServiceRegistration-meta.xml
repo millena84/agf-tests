@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Collection of requested @AuraEnabled Apex method APIs</description>
+    <label>QueryTstCm</label>
+    <operations>
+        <active>true</active>
+        <name>getrecord</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>getrecords</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>getrecordsbyids</name>
+    </operations>
+    <registrationProvider>QueryTstCm</registrationProvider>
+    <registrationProviderType>AuraEnabled</registrationProviderType>
+    <schema>openapi: 3.0.1
+info:
+  title: &quot;@AuraEnabled Apex method APIs&quot;
+  version: 1.0.0
+  description: Collection of requested @AuraEnabled Apex method APIs
+  x-betaInfo: OpenAPI documents generated from Apex classes using @AuraEnabled
+    annotations are in beta.
+servers:
+  - url: /services/aura-controllers/custom
+paths:
+  /QueryTstCm/getRecord:
+    description: Default description for the path.
+    post:
+      description: Default description for the operation.
+      operationId: getRecord
+      requestBody:
+        description: Default description for the requestBody.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recordId:
+                  type: string
+      responses:
+        &quot;200&quot;:
+          description: Status Code 200
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdDate:
+                    type: string
+                  id:
+                    type: string
+                  lastModifiedDate:
+                    type: string
+                  name:
+                    type: string
+                  ownerId:
+                    type: string
+  /QueryTstCm/getRecords:
+    description: Default description for the path.
+    post:
+      description: Default description for the operation.
+      operationId: getRecords
+      responses:
+        &quot;200&quot;:
+          description: Status Code 200
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    createdDate:
+                      type: string
+                    id:
+                      type: string
+                    lastModifiedDate:
+                      type: string
+                    name:
+                      type: string
+                    ownerId:
+                      type: string
+  /QueryTstCm/getRecordsByIds:
+    description: Default description for the path.
+    post:
+      description: Default description for the operation.
+      operationId: getRecordsByIds
+      requestBody:
+        description: Default description for the requestBody.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recordIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        &quot;200&quot;:
+          description: Status Code 200
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  lightning:type: tstCmRecordListType
+                  properties:
+                    createdDate:
+                      type: string
+                    id:
+                      type: string
+                    lastModifiedDate:
+                      type: string
+                    name:
+                      type: string
+                    ownerId:
+                      type: string
+components:
+  schemas: {}
+</schema>
+    <schemaType>OpenApi3</schemaType>
+    <schemaUploadFileExtension>yaml</schemaUploadFileExtension>
+    <schemaUploadFileName>querytstcm_openapi</schemaUploadFileName>
+    <serviceBinding>{&quot;host&quot;:&quot;&quot;,&quot;basePath&quot;:&quot;/services/aura-controllers/custom&quot;,&quot;allowedSchemes&quot;:[],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{},&quot;extensions&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>8</systemVersion>
+</ExternalServiceRegistration>

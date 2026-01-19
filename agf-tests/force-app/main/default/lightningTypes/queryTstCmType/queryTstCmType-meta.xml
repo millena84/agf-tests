@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningTypeBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <masterLabel>Query TST_CM List</masterLabel>
+    <description>Tipo custom para listar e selecionar registros TST_CM__c no Agentforce</description>
+    <resources>
+        <fileName>schema.json</fileName>
+        <filePath>schema.json</filePath>
+    </resources>
+    <resources>
+        <fileName>renderer.json</fileName>
+        <filePath>lightningDesktopGenAi/renderer.json</filePath>
+    </resources>
+</LightningTypeBundle>

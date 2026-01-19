@@ -1,0 +1,6 @@
+{
+  "title": "TST_CM Record List",
+  "description": "List of TST_CM records with selection capability",
+  "lightning:type": "@apexClassType/c__QueryTstCm",
+  "type": "array"
+}

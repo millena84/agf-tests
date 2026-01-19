@@ -1,0 +1,137 @@
+<template>
+    <div class="slds-m-around_medium">
+        <!-- DEBUG: Teste de renderização -->
+        <div style="background: #4CAF50; color: white; padding: 15px; margin-bottom: 15px; border-radius: 4px; font-weight: bold;">
+            ✅ LWC queryTstCm RENDERIZADO CORRETAMENTE!
+            <br>
+            <small>Dados recebidos: {comunicacoes.length} registros</small>
+        </div>
+
+        <!-- Cabeçalho -->
+        <div class="slds-m-bottom_medium">
+            <h2 class="slds-text-heading_medium">Pesquisa de Registros TST_CM</h2>
+        </div>
+
+        <!-- Indicador de Carregamento -->
+        <lightning-spinner
+            if:true={isLoading}
+            alternative-text="Carregando..."
+            size="medium"
+        ></lightning-spinner>
+
+        <!-- Mensagem de Erro -->
+        <template if:true={hasError}>
+            <div class="slds-m-bottom_medium">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span class="slds-assistive-text">Erro</span>
+                    <svg class="slds-icon slds-icon_small slds-m-right_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                    <span class="slds-m-left_small">{errorMessage}</span>
+                </div>
+            </div>
+        </template>
+
+        <!-- DataTable com Seleção Única -->
+        <template if:false={isLoading}>
+            <div class="slds-m-bottom_medium">
+                <lightning-datatable
+                    key-field="id"
+                    data={comunicacoes}
+                    columns={columns}
+                    selected-rows={selectedRows}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1"
+                    sort-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}
+                ></lightning-datatable>
+            </div>
+
+            <!-- Seção de Informações do Registro Selecionado -->
+            <template if:true={hasSelectedRecord}>
+                <div class="slds-box slds-m-top_medium slds-p-around_medium">
+                    <div class="slds-text-heading_small slds-m-bottom_medium">
+                        📋 Detalhes do Registro Selecionado
+                    </div>
+                    <div class="slds-grid slds-wrap slds-grid_pull-padded">
+                        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small slds-m-bottom_small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <strong>ID:</strong>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <span class="slds-text-body_regular">{selectedRecord.id}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small slds-m-bottom_small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <strong>Nome:</strong>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <span class="slds-text-body_regular">{selectedRecord.name}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small slds-m-bottom_small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <strong>Data de Criação:</strong>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <span class="slds-text-body_regular">{selectedRecord.createdDate}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small slds-m-bottom_small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <strong>Última Modificação:</strong>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <span class="slds-text-body_regular">{selectedRecord.lastModifiedDate}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-p-horizontal_small slds-m-bottom_small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <strong>Owner ID:</strong>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <span class="slds-text-body_regular">{selectedRecord.ownerId}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botões de Ação -->
+                    <div class="slds-m-top_medium slds-border_top slds-pt_medium">
+                        <lightning-button
+                            variant="brand"
+                            label="Confirmar Seleção"
+                            onclick={handleConfirmSelection}
+                            class="slds-m-right_small"
+                        ></lightning-button>
+                        <lightning-button
+                            variant="neutral"
+                            label="Limpar Seleção"
+                            onclick={handleClearSelection}
+                        ></lightning-button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Mensagem quando nenhum registro está selecionado -->
+            <template if:false={hasSelectedRecord}>
+                <div class="slds-box slds-m-top_medium slds-p-around_medium slds-text-align_center">
+                    <p class="slds-text-body_regular slds-text-color_weak">
+                        ➕ Selecione um registro na tabela acima
+                    </p>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>
