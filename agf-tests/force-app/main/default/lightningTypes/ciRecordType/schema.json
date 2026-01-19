@@ -1,0 +1,5 @@
+{
+  "title": "CI Record Type",
+  "description": "Tipo de Lightning para representar registros CI com VINCs relacionados",
+  "lightning:type": "@apexClassType/c__CiRecord"
+}

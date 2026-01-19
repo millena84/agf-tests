@@ -1,0 +1,5 @@
+{
+  "title": "TST CM Record",
+  "description": "Individual TST_CM record data from BuscaCms",
+  "lightning:type": "@apexClassType/c__TstCmRecord"
+}

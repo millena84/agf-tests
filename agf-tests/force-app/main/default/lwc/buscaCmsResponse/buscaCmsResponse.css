@@ -1,0 +1,39 @@
+:host {
+    display: block;
+}
+
+.selected-record-info {
+    background: #E3F2FD;
+    padding: 15px;
+    margin-top: 15px;
+    border-left: 4px solid #2196F3;
+    border-radius: 4px;
+}
+
+.confirm-button {
+    background: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+    background: #1976D2;
+}
+
+.confirm-button:active {
+    background: #1565C0;
+}
+
+.success-indicator {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}

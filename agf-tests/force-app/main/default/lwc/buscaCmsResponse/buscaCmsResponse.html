@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Registros TST_CM" icon-name="standard:search">
+        <template if:true={value}>
+            <div class="slds-p-around_medium">
+                <div style="background: #4CAF50; color: white; padding: 15px; margin-bottom: 15px; border-radius: 4px; font-weight: bold;">
+                    ✅ LWC buscaCmsResponse RENDERIZADO!
+                    <br/>
+                    <small>{value.length} registros encontrados</small>
+                </div>
+
+                <lightning-datatable
+                    key-field="id"
+                    data={value}
+                    columns={columns}
+                    max-row-selection="1"
+                    onrowselection={handleRowSelection}
+                ></lightning-datatable>
+
+                <!-- Seção de seleção e ação -->
+                <template if:true={hasSelectedRecord}>
+                    <div style="background: #E3F2FD; padding: 15px; margin-top: 15px; border-left: 4px solid #2196F3; border-radius: 4px;">
+                        <div class="slds-p-bottom_medium">
+                            <strong>Registro Selecionado:</strong>
+                            <p style="margin: 8px 0 0 0;">
+                                <strong>ID:</strong> {selectedRecordId}
+                                <br/>
+                                <strong>Nome:</strong> {selectedRecord.name}
+                            </p>
+                        </div>
+                        
+                        <button
+                            onclick={handleConfirmSelection}
+                            style="background: #2196F3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;"
+                        >
+                            ✓ Confirmar Seleção
+                        </button>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:false={value}>
+            <div class="slds-p-around_medium">
+                <p class="slds-text-color_weak">Nenhum registro encontrado.</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>

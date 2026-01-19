@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>receive a list of recordIds to send to query</description>
+    <developerName>TESTE3_Invocable_Buscar_Registros_TST_VINC</developerName>
+    <invocationTarget>BuscaCi</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <localDeveloperName>TESTE3_Invocable_Buscar_Registros_TST_VINC</localDeveloperName>
+    <masterLabel>TESTE3 Invocable Buscar Registros TST_VINC</masterLabel>
+</GenAiFunction>

@@ -1,0 +1,114 @@
+:host {
+    display: block;
+}
+
+/* DataTable Styling */
+lightning-datatable {
+    --slds-c-datatable-sizing-border: 1px solid #e0e0e0;
+}
+
+/* Card Styling */
+.ci-section {
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    background: #f9f9f9;
+}
+
+.ci-header {
+    background: #FFF3E0;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid #FF9800;
+    border-radius: 4px;
+}
+
+.vinc-header {
+    background: #E3F2FD;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 4px;
+}
+
+.selection-summary {
+    background: #E3F2FD;
+    padding: 15px;
+    margin-top: 20px;
+    border-left: 4px solid #2196F3;
+    border-radius: 4px;
+}
+
+.selected-item {
+    font-size: 12px;
+    margin: 5px 0;
+    padding: 5px 8px;
+    background: white;
+    border-radius: 3px;
+    border-left: 3px solid #666;
+}
+
+.selected-item.CI {
+    border-left-color: #FF9800;
+}
+
+.selected-item.VINC {
+    border-left-color: #2196F3;
+}
+
+/* Button Styling */
+.confirm-button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+    background: #45a049;
+}
+
+.clear-button {
+    background: #999;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+    background: #888;
+}
+
+/* Info Box Styling */
+.info-box {
+    background: #E8F5E9;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-left: 4px solid #4CAF50;
+    border-radius: 4px;
+}
+
+.warning-box {
+    padding: 10px;
+    background: #FFF9C4;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+.success-indicator {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}

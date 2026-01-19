@@ -1,0 +1,14 @@
+{
+  "required" : [ "tst_cm_id" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "tst_cm_id" : {
+      "title" : "ID do TST_CM",
+      "description" : "Default description for the requestBody.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

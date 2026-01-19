@@ -1,0 +1,117 @@
+<template>
+    <lightning-card title="Registros CI com Relacionamentos VINC" icon-name="standard:search">
+        <template if:true={ciRecords}>
+            <div class="slds-p-around_medium">
+                <!-- Success Indicator -->
+                <div style="background: #4CAF50; color: white; padding: 15px; margin-bottom: 15px; border-radius: 4px; font-weight: bold;">
+                    ✅ LWC buscaCiResponse RENDERIZADO!
+                    <br/>
+                    <small>{ciRecords.length} registros CI encontrados</small>
+                </div>
+
+                <!-- Instruções -->
+                <div style="background: #E8F5E9; padding: 12px; margin-bottom: 15px; border-left: 4px solid #4CAF50; border-radius: 4px;">
+                    <strong>ℹ️ Instrução:</strong> Selecione múltiplos registros CI e/ou VINC. Você pode expandir cada CI para selecionar seus VINCs relacionados.
+                </div>
+
+                <!-- CIs com VINCs Aninhados -->
+                <template for:each={ciRecords} for:item="ci">
+                    <div key={ci.id} style="margin-bottom: 25px; border: 1px solid #ddd; border-radius: 4px; padding: 15px; background: #f9f9f9;">
+                        
+                        <!-- Seção CI -->
+                        <div style="background: #FFF3E0; padding: 12px; margin-bottom: 12px; border-left: 4px solid #FF9800; border-radius: 4px;">
+                            <strong style="font-size: 14px; color: #333;">📌 CI: {ci.name}</strong>
+                            <p style="margin: 5px 0 0 0; font-size: 12px; color: #666;">
+                                ID: {ci.id}
+                            </p>
+                        </div>
+
+                        <!-- DataTable de CI (single row, mas para demonstração de estrutura) -->
+                        <div style="margin-bottom: 15px;">
+                            <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: bold; color: #444;">
+                                📋 Informações do CI:
+                            </p>
+                            <lightning-datatable
+                                key-field="id"
+                                data={ciRecords}
+                                columns={ciColumns}
+                                max-row-selection="1000"
+                                onrowselection={handleCiRowSelection}
+                                style="margin-bottom: 15px;"
+                                data-ci-table={ci.id}
+                            ></lightning-datatable>
+                        </div>
+
+                        <!-- VINCs Relacionados -->
+                        <template if:true={ci.vincRecords}>
+                            <div style="margin-top: 12px; padding: 12px; background: #E3F2FD; border-radius: 4px;">
+                                <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: bold; color: #1976D2;">
+                                    🔗 VINCs Relacionados: {ci.vincRecords.length} registro(s)
+                                </p>
+                                
+                                <!-- DataTable de VINCs com multi-select -->
+                                <lightning-datatable
+                                    key-field="id"
+                                    data={ci.vincRecords}
+                                    columns={vincColumns}
+                                    max-row-selection="1000"
+                                    onrowselection={handleVincRowSelection}
+                                    data-vinc-table={ci.id}
+                                ></lightning-datatable>
+                            </div>
+                        </template>
+
+                        <template if:false={ci.vincRecords}>
+                            <div style="padding: 10px; background: #FFF9C4; border-radius: 4px; font-size: 12px; color: #666;">
+                                ⚠️ Nenhum VINC relacionado encontrado
+                            </div>
+                        </template>
+
+                    </div>
+                </template>
+
+                <!-- Resumo e Ações -->
+                <template if:true={hasSelectedRecords}>
+                    <div style="background: #E3F2FD; padding: 15px; margin-top: 20px; border-left: 4px solid #2196F3; border-radius: 4px;">
+                        <div class="slds-p-bottom_medium">
+                            <strong>📊 Resumo de Seleção:</strong>
+                            <p style="margin: 8px 0 0 0;">
+                                {selectionSummary}
+                            </p>
+                            <template for:each={selectedRows} for:item="row">
+                                <div key={row.id} style="font-size: 12px; margin: 5px 0; padding: 5px; background: white; border-radius: 3px; border-left: 3px solid {row.type}; padding-left: 8px;">
+                                    <strong>[{row.type}]</strong> {row.name} ({row.id})
+                                    <template if:true={row.parentCiId}>
+                                        <span style="color: #999; font-size: 11px;"> → CI: {row.parentCiId}</span>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button
+                                onclick={handleConfirmSelection}
+                                style="background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;"
+                            >
+                                ✓ Confirmar Seleção ({selectedRows.length})
+                            </button>
+                            <button
+                                onclick={handleClearSelection}
+                                style="background: #999; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;"
+                            >
+                                ✕ Limpar Seleção
+                            </button>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+        </template>
+
+        <template if:false={ciRecords}>
+            <div class="slds-p-around_medium">
+                <p class="slds-text-color_weak">Nenhum registro encontrado.</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,19 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "ciRecords" : {
+      "title" : "Registros TST_CI com Relacionamentos",
+      "description" : "Lista de registros TST_VINC encontrados",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "c__ciRecordType"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
